@@ -12,7 +12,7 @@ $("#scrape-btn").on("click", function(){
 function displayScrapedArticles(){
 	$("#articles").empty();
 	$.get( "/scraped", function(data) {
-		if(data == null){
+		if(data.length == 0){
 			$("#articles").html("No articles have been scraped yet");
 		}
 		for(var i =0; i < data.length; i++){
@@ -37,7 +37,7 @@ function displayScrapedArticles(){
 function displaySavedArticles(){
 	$("#saved-articles").empty();
 	$.get( "/api/saved", function(data) {
-		if(data == null){
+		if(data.length == 0){
 			$("#saved-articles").html("No articles have been saved yet");
 		}
 		for(var i =0; i < data.length; i++){
@@ -119,7 +119,9 @@ function getSavedNotes(){
 	var url = "/notes/"+id;	
 	$("#note-area").empty();
 	$.get(url, function(data){
-
+		if(data.note.length == 0){
+			$("#note-area").html("You do not have notes on this article");
+		}
 		for(var i =0; i < data.note.length; i++){
 			
 			var noteDiv = $("<div>");
@@ -128,10 +130,22 @@ function getSavedNotes(){
 			 var deleteBtn= $("<button>");
 			deleteBtn.html("X");
 			deleteBtn.attr("class", "delete-note btn btn-danger");
-			deleteBtn.attr("id", data["_id"]);
+			deleteBtn.attr("id", data.note[i]["_id"]);
 
 			noteDiv.append(body).append(deleteBtn);
 			$("#note-area").append(noteDiv);
 		}
 	})
 }
+
+//button on click to delete note
+$(document).on("click", ".delete-note", function(event){
+	event.preventDefault();
+	var id = $(this).attr("id");
+	var url = "/notes/delete/"+id;
+	
+	$.post(url, function(response){
+		// alert(response);
+		getSavedNotes();
+	})
+});

@@ -208,7 +208,16 @@ app.post("/notes/:id", function(req, res) {
   
 });
 
-
+//route to delete saved articles
+app.post("/notes/delete/:id", function(req, res){
+	db.Note.remove(
+	{
+		_id : req.params.id
+	})
+	.then(function(data){
+		res.send("Note Deleted");
+	})
+});
 
 
 // Start the server
