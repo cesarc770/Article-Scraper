@@ -122,11 +122,13 @@ $("#save-note-btn").on("click", function(event){
 	var id = localStorage.getItem("article");
 	var url = "/notes/"+id;	
 	var note = {body : $("#note-box").val().trim()};
+
 	
 	$.post(url, note, function(response){
 		console.log(response);
 	}).then(function(){
 		getSavedNotes();
+		$("#note-box").val("");
 	})
 });
 
@@ -152,8 +154,11 @@ function getSavedNotes(){
 
 			noteDiv.append(body).append(deleteBtn);
 			$("#note-area").append(noteDiv);
+
 		}
 	})
+
+
 }
 
 //button on click to delete note
