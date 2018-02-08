@@ -1,11 +1,13 @@
 
 
 $("#scrape-btn").on("click", function(){
-	alert("scraping ... ");
 	$.get( "/api/scrape", function(data) {
+		
 	})
-	.then(function(){
+	.then(function(response){
+		alert("Added " + response + " new articles!");
 		displayScrapedArticles();
+
 	})
 });
 
@@ -13,22 +15,30 @@ function displayScrapedArticles(){
 	$("#articles").empty();
 	$.get( "/scraped", function(data) {
 		if(data.length == 0){
-			$("#articles").html("No articles have been scraped yet");
-		}
+			$("#articles").html("<div class='card bg-warning text-center warning' >Uh Oh! It looks like we don't have any new articles.</div>");
+		}else
 		for(var i =0; i < data.length; i++){
+			var articleContainer = $("<div>");
+			articleContainer.addClass("card article-container container");
 			var articleDiv = $("<div>");
-			var title = $("<h2>");
+			articleDiv.addClass("card-header row");
+			var articleBody = $("<div>");
+			articleBody.addClass("card-body row");
+			var title = $("<h5>");
 			title.html(data[i].title);
+			title.addClass("col-sm-9")
 			var link = $("<a>");
 			link.html(data[i].link);
 			link.attr("href", data[i].link);
 			var save = $("<button>");
 			save.html("SAVE ARTICLE");
-			save.attr("class", "save-btn");
+			save.addClass("save-btn btn btn-success col-sm-2 text-center");
 			save.attr("id", data[i]["_id"]);
 
-			articleDiv.append(title).append(save).append(link);
-			$("#articles").append(articleDiv);
+			articleDiv.append(title).append(save);
+			articleBody.append(link);
+			articleContainer.append(articleDiv).append(articleBody);
+			$("#articles").append(articleContainer);
 		}
 		
 	});
@@ -38,29 +48,37 @@ function displaySavedArticles(){
 	$("#saved-articles").empty();
 	$.get( "/api/saved", function(data) {
 		if(data.length == 0){
-			$("#saved-articles").html("No articles have been saved yet");
+			$("#saved-articles").html("<div class='card bg-warning text-center warning' >You don't have any saved articles.</div>");
 		}
 		for(var i =0; i < data.length; i++){
+			var articleContainer = $("<div>");
+			articleContainer.addClass("card article-container container");
 			var articleDiv = $("<div>");
-			var title = $("<h2>");
+			articleDiv.addClass("card-header row");
+			var articleBody = $("<div>");
+			articleBody.addClass("card-body row");
+			var title = $("<h5>");
 			title.html(data[i].title);
+			title.addClass("col-sm-7");
 			var link = $("<a>");
 			link.html(data[i].link);
 			link.attr("href", data[i].link);
 			 var deleteBtn= $("<button>");
 			deleteBtn.html("DELETE FROM SAVED");
-			deleteBtn.attr("class", "delete-btn");
+			deleteBtn.attr("class", "delete-btn btn btn-danger col-sm-2");
 			deleteBtn.attr("id", data[i]["_id"]);
 			var notes = $("<button>");
 			notes.html("ARTICLE NOTES");
-			notes.attr("class", "notes-btn ");
+			notes.attr("class", "notes-btn btn btn-secondary col-sm-2");
 			notes.attr("data-toggle", "modal");
 			notes.attr("data-target", "#myModal");
 			notes.attr("type", "button");
 			notes.attr("id", data[i]["_id"]);
 
-			articleDiv.append(title).append(deleteBtn).append(notes).append(link);
-			$("#saved-articles").append(articleDiv);
+			articleDiv.append(title).append(deleteBtn).append(notes);
+			articleBody.append(link);
+			articleContainer.append(articleDiv).append(articleBody)
+			$("#saved-articles").append(articleContainer);
 		}
 		
 	});
@@ -120,7 +138,7 @@ function getSavedNotes(){
 	$("#note-area").empty();
 	$.get(url, function(data){
 		if(data.note.length == 0){
-			$("#note-area").html("You do not have notes on this article");
+			$("#note-area").html("<div class='card bg-warning text-center warning' >No notes for this article yet.</div>");
 		}
 		for(var i =0; i < data.note.length; i++){
 			

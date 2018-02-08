@@ -1,0 +1,34 @@
+.article-container {
+	box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+	margin-top: 2%;
+	margin-bottom: 2%;
+	
+}
+
+.save-btn{
+	font-size: 12px;
+	height:35px;
+}
+
+.notes-btn{
+	font-size: 12px;
+	margin-right:1%;
+}
+
+.delete-btn{
+	margin-right:1%;
+	font-size: 12px;
+}
+
+.warning{
+	width: 90%;
+	margin: 5%;
+	font-size: 26px;
+	color: grey;
+	opacity: 0.65;
+	padding: 10px;
+
+}
+
+
+

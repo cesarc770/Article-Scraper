@@ -79,6 +79,7 @@ app.get("/api/scrape", function(req, res) {
    //logic to make sure we have articles with a link and a title and that are unique as well from the scrape
      if(result.title != null){
      	if(result.title != ""){
+     		array.push(result);
      		db.Article.findOne(
      			{
      				title : result.title
@@ -89,6 +90,7 @@ app.get("/api/scrape", function(req, res) {
 			        .create(result)
 			        .then(function(dbArticle) {
 			          // View the added result in the console
+     		 			
 			        })
 			        .catch(function(err) {
 			          // If an error occurred, send it to the client
@@ -98,13 +100,15 @@ app.get("/api/scrape", function(req, res) {
      			}
 	   			
      		})
+     		 
      	}
 
      }
-       
-    
+
   });
-    
+    var integer = (array.length / 2);
+    var str = integer.toString();
+    res.send(str);
  });
 
 });
