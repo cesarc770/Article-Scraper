@@ -1,3 +1,20 @@
+
+.jumbotron {
+	background: url('https://i.ytimg.com/vi/-LHIvlRFboo/maxresdefault.jpg') no-repeat center center;
+	background-size: cover;
+	height: 550px;
+	opacity: 0.50;
+}
+
+.prosto{
+	font-family: 'Prosto One', cursive;
+	font-size: 70px;
+
+}
+
+.amatic{
+	font-family: 'Amatic SC', cursive;
+}
 .article-container {
 	box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
 	margin-top: 2%;
@@ -37,5 +54,16 @@
 	margin-top: 1%;
 }
 
+.footer{
+	color: white;
+	text-align: center;
+	margin-bottom: 0;
+	padding: 10px;
+}
+
+.img-responsive{
+	width: 80px;
+	height: 80px;
+}
 
 

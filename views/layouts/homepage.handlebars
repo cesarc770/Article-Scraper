@@ -10,6 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Prosto+One" rel="stylesheet">
      <link rel="stylesheet" href="/assets/css/styles.css">
 
      
@@ -17,7 +18,10 @@
     <title id="meta_title"></title>
 
 </head>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="width:100%">
+
+
+<body onload="displayScrapedArticles()">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="width:100%; position: fixed; top:0; z-index: 500;">
 	  <a class="navbar-brand" href="/">SCRAPER</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
@@ -38,15 +42,23 @@
 	    
 	  </div>
 </nav>
-<body onload="displayScrapedArticles()">
+<div style="background-color: black" class="text-center">
+	<div  class="text-center" style="position: absolute; bottom: 300px; z-index: 400; color: white; width: 100%;">
+			<h1 class="prosto">Mongo Scraper</h1>
+			<h3 class="amatic">FOX SPORTS SOCCER EDITION</h3>
+	</div>
+	<div class="jumbotron text-center">
+		
+		
+	</div>
 	
-	
-	
-
+</div>
                 
     {{{body}}}
 
 <script type="text/javascript" src="/assets/js/script.js"></script>
+
 </body>
+
 
 </html>

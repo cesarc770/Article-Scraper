@@ -23,7 +23,7 @@ function displayScrapedArticles(){
 			var articleDiv = $("<div>");
 			articleDiv.addClass("card-header row");
 			var articleBody = $("<div>");
-			articleBody.addClass("card-body row");
+			articleBody.addClass("card-body");
 			var title = $("<h5>");
 			title.html(data[i].title);
 			title.addClass("col-sm-9")
@@ -40,7 +40,8 @@ function displayScrapedArticles(){
 			articleContainer.append(articleDiv).append(articleBody);
 			$("#articles").append(articleContainer);
 		}
-		
+		var footer = `<footer class="footer bg-dark"><a href="https://www.foxsports.com/soccer">POWERED BY <span><img src="/assets/images/foxsportslogo.png" alt="FOX SPORTS" class="img-responsive"></span></a><p>&copy; www.cesaracaceres.com 2018</p></footer>`;
+		$("body").append(footer);
 	});
 }
 
@@ -56,7 +57,7 @@ function displaySavedArticles(){
 			var articleDiv = $("<div>");
 			articleDiv.addClass("card-header row");
 			var articleBody = $("<div>");
-			articleBody.addClass("card-body row");
+			articleBody.addClass("card-body");
 			var title = $("<h5>");
 			title.html(data[i].title);
 			title.addClass("col-sm-7");
@@ -80,7 +81,8 @@ function displaySavedArticles(){
 			articleContainer.append(articleDiv).append(articleBody)
 			$("#saved-articles").append(articleContainer);
 		}
-		
+		var footer = `<footer class="footer bg-dark"><a href="https://www.foxsports.com/soccer">POWERED BY <span><img src="/assets/images/foxsportslogo.png" alt="FOX SPORTS" class="img-responsive"></span></a><p>&copy; www.cesaracaceres.com 2018</p></footer>`;
+		$("body").append(footer);
 	});
 }
 
