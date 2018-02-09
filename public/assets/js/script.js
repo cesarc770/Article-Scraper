@@ -179,3 +179,9 @@ $(document).on("click", ".delete-note", function(event){
 		getSavedNotes();
 	})
 });
+
+//function when note area gets scrolled
+function scrollNotes(){
+	var note = $("#note-area");
+	note.scrollTop;
+}

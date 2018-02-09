@@ -66,4 +66,10 @@
 	height: 80px;
 }
 
+#note-area{
+	height: 200px;
+	overflow: auto;
+	margin-bottom: 5px;
+}
+
 
