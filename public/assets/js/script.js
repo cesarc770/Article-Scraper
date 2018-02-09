@@ -145,14 +145,19 @@ function getSavedNotes(){
 		for(var i =0; i < data.note.length; i++){
 			
 			var noteDiv = $("<div>");
+			noteDiv.addClass("card container note-container");
+			var container = $("<div>");
+			container.addClass("row")
 			var body = $("<p>");
 			body.html(data.note[i].body);
+			body.addClass("col-sm-10");
 			 var deleteBtn= $("<button>");
 			deleteBtn.html("X");
-			deleteBtn.attr("class", "delete-note btn btn-danger");
+			deleteBtn.attr("class", "delete-note btn btn-danger col-sm-2");
 			deleteBtn.attr("id", data.note[i]["_id"]);
 
-			noteDiv.append(body).append(deleteBtn);
+			container.append(body).append(deleteBtn);
+			noteDiv.append(container);
 			$("#note-area").append(noteDiv);
 
 		}
