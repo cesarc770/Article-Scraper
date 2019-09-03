@@ -40,6 +40,8 @@ function displayScrapedArticles(){
 			articleContainer.append(articleDiv).append(articleBody);
 			$("#articles").append(articleContainer);
 		}
+
+		$(".footer").empty();
 		var footer = `<footer class="footer bg-dark"><a href="https://www.foxsports.com/soccer">POWERED BY <span><img src="/assets/images/foxsportslogo.png" alt="FOX SPORTS" class="img-responsive"></span></a><p>&copy; www.cesaracaceres.com 2018</p></footer>`;
 		$("body").append(footer);
 	});
